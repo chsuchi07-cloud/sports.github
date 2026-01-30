@@ -1,132 +1,517 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W573RTXB');</script>
-<!-- End Google Tag Manager -->
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CMQ26YCE2D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProSport - Premium Sports Equipment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  gtag('config', 'G-CMQ26YCE2D');
-</script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SportShop — Gear for Every Game</title>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
 
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        /* Navigation */
+        nav {
+            background: #1a1a1a;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-  <meta name="description" content="SportShop — shop shoes, apparel and equipment for football, basketball, running and more." />
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b35;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff6b35;
+        }
+
+        .cart-icon {
+            background: #ff6b35;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .cart-icon:hover {
+            background: #e55a2b;
+            color: white !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ff6b35;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Products Section */
+        .products {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .product-category {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: #f8f9fa;
+            padding: 60px 20px;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        /* Contact Section */
+        .contact {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 20px;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #ff6b35;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W573RTXB"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#">SportShop</a>
-
-      <form id="searchForm" class="search" role="search" aria-label="Search products">
-        <input id="searchInput" type="search" placeholder="Search products, e.g. running shoes" aria-label="Search input" />
-        <button type="submit" aria-label="Search">🔍</button>
-      </form>
-
-      <div class="header-actions">
-        <nav class="main-nav" aria-label="Main">
-          <a href="#" data-category="all" class="nav-link active">All</a>
-          <a href="#" data-category="footwear" class="nav-link">Footwear</a>
-          <a href="#" data-category="apparel" class="nav-link">Apparel</a>
-          <a href="#" data-category="equipment" class="nav-link">Equipment</a>
-        </nav>
-        <button id="cartButton" class="cart-btn" aria-haspopup="dialog" aria-controls="cartPanel">
-          🛒 <span id="cartCount" class="cart-count">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Gear up. Play hard.</h1>
-          <p>Top brands in footwear, apparel, and equipment — curated for athletes of all levels.</p>
-          <a href="#products" class="btn-primary">Shop Featured</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">⚡ ProSport</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="cart-icon">🛒 Cart (0)</a></li>
+            </ul>
         </div>
-        <div class="hero-image" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4e5a9103b8c8d5f9a8d64d6d3ff2f7aa" alt="" />
-        </div>
-      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Gear Up for Greatness</h1>
+        <p>Premium sports equipment for champions like you</p>
+        <a href="#products" class="btn">Shop Now</a>
     </section>
 
-    <section id="products" class="container products-section" aria-label="Products">
-      <div class="section-header">
-        <h2>Featured Products</h2>
-        <div class="sort-filter">
-          <label for="sortSelect">Sort:</label>
-          <select id="sortSelect" aria-label="Sort products">
-            <option value="featured">Featured</option>
-            <option value="price-asc">Price — low to high</option>
-            <option value="price-desc">Price — high to low</option>
-          </select>
-        </div>
-      </div>
-
-      <div id="productsGrid" class="products-grid" role="list"></div>
-
-      <template id="productCardTemplate">
-        <article class="product-card" role="listitem">
-          <div class="thumb">
-            <img src="" alt="" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-title"></h3>
-            <p class="product-category"></p>
-            <div class="price-row">
-              <span class="price"></span>
-              <button class="add-btn">Add to cart</button>
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">⚽</div>
+                <div class="product-info">
+                    <div class="product-category">Football</div>
+                    <div class="product-name">Pro Match Ball</div>
+                    <div class="product-price">$49.99</div>
+                    <button class="btn" onclick="addToCart('Pro Match Ball')">Add to Cart</button>
+                </div>
             </div>
-          </div>
-        </article>
-      </template>
+
+            <div class="product-card">
+                <div class="product-image">🏀</div>
+                <div class="product-info">
+                    <div class="product-category">Basketball</div>
+                    <div class="product-name">Elite Basketball</div>
+                    <div class="product-price">$59.99</div>
+                    <button class="btn" onclick="addToCart('Elite Basketball')">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🎾</div>
+                <div class="product-info">
+                    <div class="product-category">Tennis</div>
+                    <div class="product-name">Carbon Racket</div>
+                    <div class="product-price">$129.99</div>
+                    <button class="btn" onclick="addToCart('Carbon Racket')">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🏋️</div>
+                <div class="product-info">
+                    <div class="product-category">Fitness</div>
+                    <div class="product-name">Dumbbell Set</div>
+                    <div class="product-price">$89.99</div>
+                    <button class="btn" onclick="addToCart('Dumbbell Set')">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🏃</div>
+                <div class="product-info">
+                    <div class="product-category">Running</div>
+                    <div class="product-name">Speed Runners</div>
+                    <div class="product-price">$119.99</div>
+                    <button class="btn" onclick="addToCart('Speed Runners')">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🏊</div>
+                <div class="product-info">
+                    <div class="product-category">Swimming</div>
+                    <div class="product-name">Pro Goggles</div>
+                    <div class="product-price">$34.99</div>
+                    <button class="btn" onclick="addToCart('Pro Goggles')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <!-- Cart panel (simple modal) -->
-  <div id="cartPanel" class="cart-panel" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Shopping cart">
-    <div class="cart-inner container">
-      <button id="closeCart" class="close-cart" aria-label="Close cart">✕</button>
-      <h3>Your Cart</h3>
-      <ul id="cartList" class="cart-list" aria-live="polite"></ul>
-      <div class="cart-footer">
-        <div class="cart-total">Total: <strong id="cartTotal">$0.00</strong></div>
-        <button id="checkoutBtn" class="btn-primary">Checkout</button>
-      </div>
-    </div>
-  </div>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose ProSport?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Free Shipping</h3>
+                <p>On orders over $50. Fast delivery to your door.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>Quality Guarantee</h3>
+                <p>Premium products from trusted brands.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Secure Payment</h3>
+                <p>100% safe and encrypted transactions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Easy Returns</h3>
+                <p>30-day return policy, no questions asked.</p>
+            </div>
+        </div>
+    </section>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> SportShop — Built with ❤️</p>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#">Contact</a>
-        <a href="#">Returns</a>
-        <a href="#">Privacy</a>
-      </nav>
-    </div>
-  </footer>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
 
-  <script src="script.js" defer></script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ProSport. All rights reserved.</p>
+        <p>Follow us on <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a></p>
+    </footer>
+
+    <script>
+        let cart = 0;
+
+        function addToCart(productName) {
+            cart++;
+            document.querySelector('.cart-icon').textContent = `🛒 Cart (${cart})`;
+            
+            // Simple alert notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideIn 0.3s;
+            `;
+            notification.textContent = `${productName} added to cart!`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 2000);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            event.target.reset();
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add slide-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
+
+
+
+
+
+
+
